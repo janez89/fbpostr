@@ -1,0 +1,13 @@
+body {
+  padding-top: 70px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.infobar {
+	margin-bottom: 15px;
+}
+
+.infobar h3 { margin-top: 0; }
