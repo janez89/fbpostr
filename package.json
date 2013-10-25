@@ -1,0 +1,34 @@
+{
+  "name": "fbpostr",
+  "description": "facebook timed poster app",
+  "version": "1.0.0",
+  "private": true,
+  "engines" : {
+    "node" : ">=0.8.1"
+  },
+  "dependencies":{
+    "express": "3.x",
+    "vent": "",
+    "async": "0.1.22",
+    "fbgraph": "",
+    "signed-request": "",
+    "nedb": ""
+  },
+  "devDependencies": {
+    "mocha": "~1.8.2",
+    "should": "",
+    "zombie": ""
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "author" : {
+    "name" : "Janos Meszaros",
+    "email" : "mjanee@gmail.com",
+    "url" : "https://github.com/janez89/"
+  },
+  "contributors": []
+}

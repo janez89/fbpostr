@@ -1,0 +1,17 @@
+# nodemon config file
+
+/public/*       # ignore static files
+/cmds/*         # ignore commandline nodejs scripts
+/views/*        # ignore ECT views
+/db/*       	# ignore DB Resoucres
+/logs/*         # ignore Log files
+/.git/*         # ignore Git files
+/.idea/*        # ignore WebStorm files
+./README.md     # a specific file
+./package.json  # package file
+./cmd.js        # commandline runner
+*.css           # ignore any CSS files too
+*.jpg           # ignore JPG files
+*.png           # ignore PNG files
+*.log           # ignore LOG files
+*.sh            # ignore BASH files
