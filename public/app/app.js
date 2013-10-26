@@ -14,6 +14,10 @@ postrApp.config(['$routeProvider', function ($routeProvider) {
 		templateUrl: '/app/views/404.html',
 		controller: 'HomeCtrl'
 	}).
+	when('/login', {
+		templateUrl: '/app/views/login.html',
+		controller: 'LoginCtrl'
+	}).
 	when('/posts/:type', {
 		templateUrl: '/app/views/posts.html',
 		controller: 'PostsCtrl'
