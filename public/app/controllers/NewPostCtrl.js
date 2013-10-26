@@ -44,7 +44,11 @@ postrApp.controller('NewPostCtrl', function NewPostsCtrl ($scope, $resource, $ht
 		$http({
 			method: 'POST', 
 			url: '/post/'+ $scope.post.type +'/'+ $scope.post.uid, 
-			data: { message: $scope.post.message, timed: $scope.post.timed } 
+			data: { 
+				message: $scope.post.message, 
+				timed: $scope.post.timed,
+				picture: $scope.post.picture
+			}
 		}).then(function (resp) {
 			if (resp.status < 400) {
 				$scope.msgSuccess = true;
