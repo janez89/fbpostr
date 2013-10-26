@@ -25,7 +25,7 @@
 		<table ng-table="accountParams" show-filter="false" class="table table-striped table-bordered">
 		<tr ng-repeat="account in accounts">
 			<td>
-				<a href="#/post/user/{{account.id}}" class="btn btn-success btn-xs" title="Új bejegyzés"><span class="glyphicon glyphicon-comment"></span></a>
+				<a href="#/newpost/user/{{account.id}}" class="btn btn-success btn-xs" title="Új bejegyzés"><span class="glyphicon glyphicon-comment"></span></a>
 		    	<button ng-click="doRemove(account)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span></button>
 		    	<button ng-click="doUpdateFanpage(account)" class="btn btn-xs" 
 		    		ng-class="{'btn-primary': !updatedFanpages, 'btn-success': updatedFanpages }"><span class="glyphicon glyphicon-refresh"></span> Oldalak ellenőrzése</button>
@@ -50,7 +50,7 @@
 		<table ng-table="fanpageParams" show-filter="false" class="table table-striped table-bordered">
 		<tr ng-repeat="fanpage in fanpages">
 			<td>
-				<a href="#/post/page/{{fanpage.id}}" class="btn btn-success btn-xs" title="Új bejegyzés"><span class="glyphicon glyphicon-comment"></span></a>
+				<a href="#/newpost/page/{{fanpage.id}}" class="btn btn-success btn-xs" title="Új bejegyzés"><span class="glyphicon glyphicon-comment"></span></a>
 		    	<button ng-click="doRemovePage(fanpage)" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span></button>
 		    </td>
 		    <td data-title="'Név'" filter="{ 'name': 'text'}">
