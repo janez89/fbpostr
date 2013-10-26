@@ -16,13 +16,14 @@ module.exports = function ($) {
 			return res.badRequest('Missing message parameter!');
 
 		// the post
-		var post = { 
-			uid:     req.params.id, 
+		var post = {
+			uid:     req.params.id,
 			type:    req.params.type,
 			owner:   '',
-			message: req.body.message, 
+			message: req.body.message,
+			picture: req.body.picture,
 			timed:   req.body.timed ? new Date(req.body.timed).getTime() : new Date().getTime(),
-			status:  0 
+			status:  0
 		};
 
 		// check user or fanpage exitstence
@@ -52,8 +53,20 @@ module.exports = function ($) {
 	});
 
 	$.app.get('/post', function (req, res) {
-		$.db.post.find({}, function (err, docs) {
+		var cond = {};
+		if (req.query.status )
+			cond.status = parseInt(req.query.status, 10);
+
+		$.db.post.find(cond, function (err, docs) {
 			res.json({docs: docs});
+		});
+	});
+
+	$.app.get('/post/:id', function (req, res) {
+		$.db.post.findOne({_id: req.params.id}, function (err, docs) {
+			if (err || !doc)
+				return res.notFound();
+			res.json(docs);
 		});
 	});
 
@@ -108,16 +121,19 @@ module.exports = function ($) {
 		var post = params.post;
 
 		var sendMessage = function (access_token) {
-			var params = { 
-				message: post.message, 
+			var params = {
+				message: post.message,
 				access_token : access_token
 			};
+
+			if (post.picture)
+				params.picture = post.picture; // img url
 
 			$.graph.post('/'+ post.uid +'/feed', params, function (err, res) {
 				if (err) {
 					return $.db.post.update(
-					{ _id: post._id}, 
-					{ $set: { status: 2, err: err }}, 
+					{ _id: post._id},
+					{ $set: { status: 2, err: err }},
 					function (err2) {
 						console.warn('Failed post! Owner: %s, Post Id: %s ', post._id, post.owner);
 					});
