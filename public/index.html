@@ -36,10 +36,7 @@
 		</div>
 		<div class="collapse navbar-collapse">
 		  <ul class="nav navbar-nav">
-			<li><a href="#/posts">Bejegyzések</a></li>
-			<li><a href="#/newpost">Új bejegyzés</a></li>
-			<li><a href="#/settings">Facebook hozzáférések</a></li>
-			<li><a href="#/logout">Kilépés</a></li>
+			<li ng-repeat="link in links" ng-class="{ active: link.url == activeLink }"><a href="#{{link.url}}">{{link.name}}</a></li>
 		  </ul>
 		</div><!--/.nav-collapse -->
 	  </div>
