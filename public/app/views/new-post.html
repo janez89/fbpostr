@@ -2,8 +2,14 @@
 	<div class="col-md-12">
 		<div class="infobar">
 			<h3>Új állapot megosztás</h3>
-			<a href="#/posts/waiting" class="btn btn-primary">Várakozó bejegyzések</a>
-			<a href="#/posts/shared" class="btn btn-primary">Megosztott bejegyzések</a>
+
+			<a href="#/posts" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span></a>
+			<a href="#/posts" class="btn btn-primary">
+				<span class="glyphicon glyphicon-th-list"></span> Összes bejegyzés</a>
+			<a href="#/posts/waiting" class="btn btn-primary">
+				<span class="glyphicon glyphicon-time"></span> Várakozó bejegyzések</a>
+			<a href="#/posts/shared" class="btn btn-primary">
+				<span class="glyphicon glyphicon-ok-circle"></span> Megosztott bejegyzések</a>
 		</div>
 	</div>
 </div>
@@ -32,6 +38,11 @@
 				<label for="message">Állapot megosztása</label>
 				<textarea class="form-control" name="timed" id="timed" 
 					ng-model="post.message" required ng-minlength="2"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="picture">Kép URL</label>
+				<input type="text" class="form-control" id="picture" name="picture" 
+					ng-model="post.picture" placeholder="http://...">
 			</div>
 			<div class="form-group">
 				<label for="timed">Időzítés</label>
