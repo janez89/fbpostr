@@ -27,7 +27,7 @@ db.fanpage.ensureIndex({ fieldName: 'id', unique: true });
 
 // configuration
 app.configure(function(){
-	app.set('port', process.env.PORT || 3000);
+	app.set('port', process.env.PORT || config.port);
 	app.use(express.cookieParser());
 	app.use(express.cookieSession({ key: 'fbpostr', secret: 'key'}));
 	app.use(express.logger('dev'));
