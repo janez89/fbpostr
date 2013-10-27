@@ -1,6 +1,7 @@
 module.exports = {
 	// If you change then check facebook section redirect_uri value!
 	port: 3000,
+	secret: 'ChangeThis', // Cookie secret key
 	// admin user login datas
 	user: {
 		name: 'admin',
