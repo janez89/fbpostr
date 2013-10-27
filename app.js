@@ -29,11 +29,26 @@ db.fanpage.ensureIndex({ fieldName: 'id', unique: true });
 app.configure(function(){
 	app.set('port', process.env.PORT || config.port);
 	app.use(express.cookieParser());
-	app.use(express.cookieSession({ key: 'fbpostr', secret: 'key'}));
+	app.use(express.session({ key: 'fbpostr', secret: config.secret }));
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
 	app.use(require('./response'));
+	// check user is authorized
+	app.use(function (req, res, next) {
+		// exceptions
+		if (req.path === '/' || 
+			req.path === '/login' ||
+			req.path === '/account/loginurl' ||
+			req.path.match(/^\/app\/.*/) || 
+			req.path.match(/^\/assets\/.*/))
+			return next();
+
+		if (!req.session.login)
+			return res.unauthorized();
+		// session alive
+		next();
+	});
 	app.use(app.router);
 	app.use(express.static(__dirname + '/public', { maxAge: 86400000 }));
 });
