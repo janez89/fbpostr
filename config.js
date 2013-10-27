@@ -1,14 +1,16 @@
 module.exports = {
+	// If you change then check facebook section redirect_uri value!
+    port: 3000,
 	// admin user login datas
 	user: {
-		name: 'username',
-		pass: 'password'
+		name: 'admin',
+		pass: 'admin'
 	},
 	// facebook app datas
 	facebook: {
 		client_id:      'YOUR FACEBOOK APP ID',
 		client_secret:  'YOU FACEBOOK APP SECRET',
-		scope:          'email, user_about_me, user_birthday, user_location, publish_stream',
 		redirect_uri:   'http://localhost:3000/',
+		scope:          'email, user_about_me, publish_stream, manage_pages'
 	}
 };
