@@ -21,6 +21,11 @@ postrApp.config(['$routeProvider', '$httpProvider', function ($routeProvider, $h
 		controller: 'LoginCtrl',
 		restrict: false
 	}).
+	when('/logout', {
+		templateUrl: '/app/views/login.html',
+		controller: 'LoginCtrl',
+		restrict: false
+	}).
 	when('/posts/:type', {
 		templateUrl: '/app/views/posts.html',
 		controller: 'PostsCtrl',
