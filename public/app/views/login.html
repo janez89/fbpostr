@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="col-md-12">
+		<form class="form-signin" ng-submit="doLogin()">
+			<h2 class="form-signin-heading">Facebook Postr</h2>
+			<div class="alert alert-danger" ng-show="loginError">Hiba! Rossz felhasználónév vagy jelszó!</div>
+			<input type="text" ng-model="user.username" class="form-control" placeholder="Felhasználónév" autofocus>
+			<input type="password" ng-model="user.password" class="form-control" placeholder="Jelszó">
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Belépés</button>
+		</form>
+	</div>
+</div>
