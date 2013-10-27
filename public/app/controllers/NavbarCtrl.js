@@ -1,5 +1,6 @@
 
 postrApp.controller('NavbarCtrl', function NavbarCtrl ($scope, $rootScope, $location) {
+	$scope.hideNavbar = false;
 	// active link
 	$scope.activeLink = $location.path();
 	// navbar links
@@ -17,5 +18,10 @@ postrApp.controller('NavbarCtrl', function NavbarCtrl ($scope, $rootScope, $loca
 			$scope.activeLink = '/newpost';
 		else
 			$scope.activeLink = $location.path();
+
+		// hide navbar
+		$scope.hideNavbar = $location.path() === '/logout' ||
+							$location.path() === '/login' ||
+							$location.path() === '/404';
     });
 });
