@@ -1,9 +1,0 @@
-Tasks
-=====
-
-* facebook (több) accountok felcsatolása
-* kipostolandó üzenetek, képek elhelyezése, időzítése
-* üzenetek időzítése
-* facebook alkalmazások hozzátársítása
-* local db
-* vissza jelző rendszer, hogy az üzenet kiküldése sikerült-e
