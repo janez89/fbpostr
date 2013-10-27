@@ -11,7 +11,6 @@
     "vent": "",
     "async": "0.1.22",
     "fbgraph": "",
-    "signed-request": "",
     "nedb": ""
   },
   "devDependencies": {
