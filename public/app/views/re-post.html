@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="infobar">
+			<h3>Új állapot megosztás</h3>
+
+			<a href="#/posts" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span></a>
+			<a href="#/posts" class="btn btn-primary">
+				<span class="glyphicon glyphicon-th-list"></span> Összes bejegyzés</a>
+			<a href="#/posts/waiting" class="btn btn-primary">
+				<span class="glyphicon glyphicon-time"></span> Várakozó bejegyzések</a>
+			<a href="#/posts/shared" class="btn btn-primary">
+				<span class="glyphicon glyphicon-ok-circle"></span> Megosztott bejegyzések</a>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="alert alert-success" ng-show="msgSuccess">A bejegyzést sikeresen elmentettük!</div>
+		<div class="alert alert-danger" ng-show="msgError">A bejegyzést nem sikerült elmenteni!</div>
+		<form role="form" name="frm" ng-submit="doSave()" ng-show="!msgSuccess">
+			<div class="form-group">
+				<label for="type">Típus</label>
+				<select class="form-control" name="type" id="type" ng-model="post.type" required>
+					<option value="">Válassz</option>
+					<option value="page">Oldal</option>
+					<option value="user">Felhasználó</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="uid">Oldal</label>
+				<select class="form-control" ng-model="post.uid" name="uid" id="uid" required
+					ng-options="p.id as p.name for p in datas">
+					<option value="">Válassz</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="message">Állapot megosztása</label>
+				<textarea class="form-control" name="timed" id="timed" 
+					ng-model="post.message" required ng-minlength="2"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="picture">Kép URL</label>
+				<input type="text" class="form-control" id="picture" name="picture" 
+					ng-model="post.picture" placeholder="http://...">
+			</div>
+			<div class="form-group">
+				<label for="timed">Időzítés</label>
+				<input type="text" class="form-control" id="timed" name="timed" 
+					ng-model="post.timed" ngPattern="patt_time">
+			</div>
+			<button type="submit" class="btn btn-success" ng-disabled="!frm.$valid">Mentés</button>
+		</form>
+	</div>
+</div>
