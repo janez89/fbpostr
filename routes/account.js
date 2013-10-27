@@ -3,9 +3,27 @@ var async = require('async');
 
 module.exports = function ($) {
 
+	// admin user login
+	$.app.post('/login', function (req, res) {
+		if (!req.body.username || !req.body.password)
+			return res.badRequest('Missing parameter!');
+
+		if ($.config.user.name !== req.body.username || $.config.user.pass !== req.body.password)
+			return res.unauthorized();
+		
+		req.session.login = true;
+		res.noContent();
+	});
+
+	$.app.get('/logout', function (req, res) {
+		req.session.login = false;
+		req.session.destroy();
+		res.noContent();
+	});
+
 	// get facebook login url
 	$.app.get('/account/loginurl', function (req, res) {
-		res.json({ loginUrl: loginUrl });
+		res.json({ loginUrl: $.loginUrl });
 	});
 
 	$.app.get('/account/check', function (req, res) {
@@ -41,7 +59,7 @@ module.exports = function ($) {
 			if (err || !user)
 				return res.notFound();
 			// get user fanpages
-			$.graph.get('/me/accounts', { access_token: user.access_token }, function (err, resp) {
+			$.graph.get('/me/accounts', { access_token: user.access_token, limit: 25 }, function (err, resp) {
 				if (!err && resp.data) {
 					for (var i=0, len=resp.data.length; i < len; i++) {
 						resp.data[i].uid = user.id;
@@ -92,18 +110,23 @@ module.exports = function ($) {
 					});
 
 					// get user fanpages
-					$.graph.get('/me/accounts', { access_token: fbToken.access_token }, function (err, resp) {
+					$.graph.get('/me/accounts', { access_token: fbToken.access_token, limit: 25 }, function (err, resp) {
 						if (!err && resp.data) {
 							for (var i=0, len=resp.data.length; i < len; i++) {
 								resp.data[i].uid = user.id;
 								resp.data[i].owner = user.name;
 							}
-							// insert user pages
-							$.db.fanpage.insert(resp.data, function (err) {});
+							async.forEachLimit(resp.data, 3, function (item, next) {
+								// insert user pages
+								$.db.fanpage.insert(item, next);
+							}, function (err) {
+								console.error('Error with the fanpage inserts: %s', err);
+							});
 						}
 					});
 				});
 			});
+			// redirect user
 			res.redirect('/');
 		});
 	});
