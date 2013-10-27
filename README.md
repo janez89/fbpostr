@@ -11,6 +11,10 @@ Időzített tartalom kihelyező eszköz a facebook oldalakhoz.
 
 ![alt text][posts]
 
+### Követelmények
+* Szerver: NodeJS
+* Kliens: Modern Böngésző ( Chrome, Firefox, Opera, >=IE8 )
+
 ### Telepítés
 
 A Postr futtatásához szükség van a [Node.JS](http://nodejs.org/download/)-re.
@@ -43,6 +47,7 @@ A beállítások a `config.js` fájlban vannak.
 module.exports = {
     // If you change then check facebook section redirect_uri value!
     port: 3000,
+    secret: 'ChangeThis', // Cookie Secret Key
     // admin user login. CHANGE THIS!
     user: {
         name: 'admin',
