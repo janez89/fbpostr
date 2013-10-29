@@ -47,7 +47,8 @@ postrApp.controller('NewPostCtrl', function NewPostsCtrl ($scope, $resource, $ht
 			data: { 
 				message: $scope.post.message, 
 				timed: $scope.post.timed,
-				picture: $scope.post.picture
+				picture: $scope.post.picture,
+				link: $scope.post.link
 			}
 		}).then(function (resp) {
 			if (resp.status < 400) {
