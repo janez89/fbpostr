@@ -40,9 +40,14 @@
 					ng-model="post.message" required ng-minlength="2"></textarea>
 			</div>
 			<div class="form-group">
+				<label for="link">URL</label>
+				<input type="text" class="form-control" id="link" name="link" 
+					ng-model="post.link" placeholder="http://...">
+			</div>
+			<div class="form-group">
 				<label for="picture">Kép URL</label>
 				<input type="text" class="form-control" id="picture" name="picture" 
-					ng-model="post.picture" placeholder="http://...">
+					ng-model="post.picture" placeholder="http://valami.com/kep.jpg">
 			</div>
 			<div class="form-group">
 				<label for="timed">Időzítés</label>
