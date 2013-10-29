@@ -22,6 +22,7 @@ module.exports = function ($) {
 			owner:   '',
 			message: req.body.message,
 			picture: req.body.picture,
+			link:    req.body.link,
 			timed:   req.body.timed ? new Date(req.body.timed).getTime() : new Date().getTime(),
 			status:  0
 		};
@@ -128,6 +129,9 @@ module.exports = function ($) {
 
 			if (post.picture)
 				params.picture = post.picture; // img url
+
+			if (post.link)
+				params.link = post.link; // link url
 
 			$.graph.post('/'+ post.uid +'/feed', params, function (err, res) {
 				if (err) {
